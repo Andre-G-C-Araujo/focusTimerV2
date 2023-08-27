@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: clamp(40%, 1% + 2vw, 62.5%);
+
+  --text-color: #e1e1e6;
+  --mainBg: #000;
+  --paddingColor-button: #e1e1e6;
+  --selectedButton: #02799d;
+  --btnColor: #e1e1e6;
+  --text-colore: #323238;
+  --desktopView: row;
+}
+
+.light {
+  --text-color: #323238;
+  --mainBg: #fff;
+  --paddingColor-button: #e1e1e6; /*verificar se ira mudar*/
+  --selectedButton: #02799d;
+}
+body {
+  background: var(--mainBg);
+  display: grid;
+  place-items: center;
+}
+.app {
+  height: 100vh;
+
+  display: flex;
+  flex-direction: var(--desktopView);
+  justify-content: center;
+  align-items: center;
+}
+
+/*Left Side*/
+.leftContent {
+  width: 40rem;
+}
+
+.clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--text-color);
+  font-family: sans-serif;
+  font-size: 9.6rem;
+  font-weight: bold;
+  padding: 2rem 3.2rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+
+  > .btnLeftSize {
+    border: 0;
+    background: transparent;
+    color: var(--text-color);
+
+    padding: 0.5rem 0rem;
+    font-size: 4.2rem;
+    border-radius: 999rem;
+  }
+}
+
+/*Right Side*/
+.rightContent {
+  width: 25rem;
+  margin-left: 11rem;
+}
+
+.iconButtons {
+  display: flex;
+  justify-content: right;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.btnRightSize {
+  border: 0;
+  background: var(--paddingColor-button);
+
+  padding: 0.5rem 0rem;
+  font-size: 4.2rem;
+
+  height: 12rem;
+  width: 10rem;
+  border-radius: 2.4rem;
+}
+
+.btnLeftSize,
+.btnRightSize:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  :root {
+    --desktopView: column;
+  }
+}
