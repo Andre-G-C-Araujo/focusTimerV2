@@ -97,10 +97,18 @@ body {
 .btnLeftSize,
 .btnRightSize:hover {
   cursor: pointer;
+
+  color: #afafb1;
 }
 
+.btnClicked {
+  background: var(--selectedButton);
+}
 .hidden {
   display: none;
+}
+.test {
+  background: red;
 }
 
 /*Mobile*/

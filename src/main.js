@@ -1,7 +1,7 @@
 // State
 const state = {
   seconds: 0,
-  minutes: 0,
+  minutes: 1262,
   itsOn: false,
 };
 
@@ -54,6 +54,18 @@ btnMinus.addEventListener("click", () => {
   state.minutes = Number(minutes.textContent) - 5;
   updateDisplay();
 });
+
+const iconContent = document.querySelector(".iconButtons");
+
+iconContent.addEventListener("click", (event) => {
+  if (!event.target.classList.contains("btnRightSize")) {
+    return;
+  }
+  event.target.classList.toggle("test");
+
+  // if(event.target)
+});
+
 //clock text
 
 const timer = () => {
@@ -72,7 +84,7 @@ const timer = () => {
   setTimeout(() => {
     state.seconds--;
     timer();
-  }, 200);
+  }, 1000);
 
   updateDisplay();
 };
@@ -81,3 +93,5 @@ const updateDisplay = () => {
   minutes.textContent = String(state.minutes).padStart(2, "0");
   seconds.textContent = String(state.seconds).padStart(2, "0");
 };
+
+updateDisplay();
