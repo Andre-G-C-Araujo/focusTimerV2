@@ -1,7 +1,7 @@
 // State
 const state = {
   seconds: 0,
-  minutes: 1262,
+  minutes: 0,
   itsOn: false,
 };
 
@@ -10,6 +10,16 @@ const state = {
 const clock = document.querySelector(".clock");
 const minutes = document.querySelector(".minutes");
 const seconds = document.querySelector(".seconds");
+
+//
+const florestSound = new Audio("./assets/Floresta.wav");
+const rainSound = new Audio("./assets/Chuva.wav");
+const cafeteria = new Audio("./assets/Cafeteria.wav");
+const lareira = new Audio("./assets/Lareira.wav");
+florestSound.loop = true;
+rainSound.loop = true;
+cafeteria.loop = true;
+lareira.loop = true;
 
 //buttons catch
 
@@ -55,16 +65,70 @@ btnMinus.addEventListener("click", () => {
   updateDisplay();
 });
 
-const iconContent = document.querySelector(".iconButtons");
+// let musicState = false;
 
-iconContent.addEventListener("click", (event) => {
-  if (!event.target.classList.contains("btnRightSize")) {
+const playMusic = (music, handleEvent, musicState) => {
+  musicState = true;
+
+  if (
+    btnsRightSide.tree.classList.contains("btnClicked") ||
+    btnsRightSide.cloud.classList.contains("btnClicked") ||
+    btnsRightSide.fire.classList.contains("btnClicked") ||
+    btnsRightSide.shop.classList.contains("btnClicked")
+  ) {
+    music.pause();
+    handleEvent.classList.remove("btnClicked");
+
     return;
   }
-  event.target.classList.toggle("test");
+
+  if (musicState) {
+    musicState = !musicState;
+    music.play();
+    handleEvent.classList.add("btnClicked");
+  }
+};
+
+const iconContent = document.querySelector(".iconButtons");
+
+let musicState = false;
+const btnsRightSide = {
+  tree: document.querySelector(".ph-tree"),
+  cloud: document.querySelector(".ph-cloud-rain"),
+  shop: document.querySelector(".ph-storefront"),
+  fire: document.querySelector(".ph-fire"),
+};
+
+iconContent.addEventListener(
+  "click",
+  (event) => {
+    const handleEvent = event.target;
+    if (!handleEvent.classList.contains("btnRightSize")) {
+      return;
+    }
+    // if (
+    //   handleEvent.classList.contains("btnRightSize") &&
+    //   handleEvent.classList.contains("ph-tree")
+    // ) {
+    //   handleEvent.classList.toggle("btnClicked");
+    //   florestSound.play();
+    // }
+    if (handleEvent.classList.contains("ph-tree")) {
+      playMusic(florestSound, handleEvent, musicState);
+    }
+    if (handleEvent.classList.contains("ph-cloud-rain")) {
+      playMusic(rainSound, handleEvent, musicState);
+    }
+    if (handleEvent.classList.contains("ph-storefront")) {
+      playMusic(cafeteria, handleEvent, musicState);
+    }
+    if (handleEvent.classList.contains("ph-fire")) {
+      playMusic(lareira, handleEvent, musicState);
+    }
+  }
 
   // if(event.target)
-});
+);
 
 //clock text
 

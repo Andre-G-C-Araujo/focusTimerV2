@@ -83,10 +83,9 @@ body {
 }
 
 .btnRightSize {
-  border: 0;
   background: var(--paddingColor-button);
 
-  padding: 0.5rem 0rem;
+  padding: 4rem 3rem;
   font-size: 4.2rem;
 
   height: 12rem;
@@ -97,18 +96,16 @@ body {
 .btnLeftSize,
 .btnRightSize:hover {
   cursor: pointer;
-
   color: #afafb1;
 }
 
 .btnClicked {
   background: var(--selectedButton);
 }
+/*icones*/
+
 .hidden {
   display: none;
-}
-.test {
-  background: red;
 }
 
 /*Mobile*/
