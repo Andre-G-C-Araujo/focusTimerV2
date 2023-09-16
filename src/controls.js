@@ -2,9 +2,10 @@ import { state } from "./state.js";
 import { timer } from "./timer.js";
 import * as el from "./elements.js";
 import { updateDisplay } from "./updateDisplay.js";
+import { setTimer } from "./function.js";
 
-const btnPlay = document.getElementById("play-button");
-const btnPause = document.getElementById("pause-button");
+export const btnPlay = document.getElementById("play-button");
+export const btnPause = document.getElementById("pause-button");
 const btnReset = document.getElementById("reset-button");
 const btnPlus = document.getElementById("btnPlus");
 const btnMinus = document.getElementById("btnMinus");
@@ -20,14 +21,17 @@ btnPlay.addEventListener("click", () => {
   btnLeftToggle();
 });
 
-btnPause.addEventListener("click", () => {
+const togglePlayPauseIcon = () => {
   btnLeftToggle();
   state.itsOn = false;
-});
+};
+3;
+btnPause.addEventListener("click", togglePlayPauseIcon);
 
 btnReset.addEventListener("click", () => {
   state.minutes = 0;
-  state.seconds = 0; //state menos state (state - state)
+  state.seconds = 0;
+  setTimer();
   updateDisplay();
 });
 

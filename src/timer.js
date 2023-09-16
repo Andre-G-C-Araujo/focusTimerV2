@@ -1,5 +1,13 @@
 import { updateDisplay } from "./updateDisplay.js";
 import { state } from "./state.js";
+import { sound } from "./sounds.js";
+import { setTimer, setTimeStart } from "./function.js";
+
+const spanText = document.querySelector(".minutes");
+// spanText.addEventListener("click", () => {
+//   spanText.setAttribute("contenteditable", true);
+//   spanText.focus();
+// });
 
 export const timer = () => {
   if (state.itsOn === false) {
@@ -11,7 +19,10 @@ export const timer = () => {
     state.minutes--;
   }
   if (state.minutes < 0) {
-    console.log("your time is done, lets take a shower and make some food");
+    sound.kitchenTimer.play();
+    setTimeout(() => {
+      alert("your time is over");
+    }, 2000);
     return;
   }
   setTimeout(() => {

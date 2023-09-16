@@ -3,6 +3,8 @@ export const sound = {
   rainSound: new Audio("./assets/Chuva.wav"),
   cafeteria: new Audio("./assets/Cafeteria.wav"),
   lareira: new Audio("./assets/Lareira.wav"),
+  soundClick: new Audio("./assets/button-press.wav"),
+  kitchenTimer: new Audio("./assets/kichen-timer.mp3"),
 };
 sound.florestSound.loop = true;
 sound.rainSound.loop = true;
